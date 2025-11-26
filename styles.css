@@ -141,9 +141,9 @@ body.dark-mode .links a {
     margin-top: 1rem;
 }
 
-/* Dark mode: 2 columns, show first 2 images (fig and bird) side by side */
+/* Dark mode: 2 columns, show first 2 images (fig and bird) side by side, fig bigger */
 body.dark-mode .image-gallery {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1.8fr 1fr;
 }
 
 body.dark-mode .image-item:nth-child(1),
