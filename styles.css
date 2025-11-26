@@ -91,8 +91,9 @@ body {
 .image-gallery {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: .5rem;
     max-width: 100%;
+    margin-top: 1rem;
 }
 
 .image-item {
@@ -120,7 +121,7 @@ main {
 }
 
 .links {
-    margin: 2rem 0;
+    margin: 1rem 0;
     display: flex;
     justify-content: space-between;
     width: 100%;
