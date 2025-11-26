@@ -60,12 +60,16 @@ const seasonImages = ['photos/winter.jpg', 'photos/spring.jpg', 'photos/summer.j
 function updateImages(isDark) {
     const imageItems = document.querySelectorAll('.image-item img');
     if (isDark) {
-        // Dark mode: use fig.jpg for all images
-        imageItems.forEach(img => {
-            img.src = 'photos/fig.jpg';
+        // Dark mode: fig.jpg on left, bird.jpg on right
+        imageItems.forEach((img, index) => {
+            if (index === 0) {
+                img.src = 'photos/fig.jpg';
+            } else if (index === 1) {
+                img.src = 'photos/bird.jpg';
+            }
         });
     } else {
-        // Light mode: restore original season images
+        // Light mode: restore original season images for all 4
         imageItems.forEach((img, index) => {
             if (seasonImages[index]) {
                 img.src = seasonImages[index];
