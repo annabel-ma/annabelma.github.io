@@ -181,8 +181,8 @@ main {
 }
 
 .section {
-    margin-top: 6rem;
-    padding-top: 2rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .section h2 {
@@ -195,7 +195,10 @@ main {
 
 .section p {
     color: #333333;
-    line-height: 1.8;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    text-align: left;
+    max-width: 100%;
 }
 
 .back-to-top {
