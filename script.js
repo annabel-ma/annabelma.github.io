@@ -53,28 +53,30 @@ backToTop.addEventListener('click', () => {
 });
 
 // Dark mode toggle functionality
-function initDarkMode() {
+const seasonImages = ['photos/winter.jpg', 'photos/spring.jpg', 'photos/summer.jpg', 'photos/fall.jpg'];
+
+function updateImages(isDark) {
+    const imageItems = document.querySelectorAll('.image-item img');
+    if (isDark) {
+        // Dark mode: use fig.jpg for all images
+        imageItems.forEach(img => {
+            img.src = 'photos/fig.jpg';
+        });
+    } else {
+        // Light mode: restore original season images
+        imageItems.forEach((img, index) => {
+            if (seasonImages[index]) {
+                img.src = seasonImages[index];
+            }
+        });
+    }
+}
+
+// Initialize dark mode
+document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     
-    function updateImages(isDark) {
-        const imageItems = document.querySelectorAll('.image-item img');
-        if (isDark) {
-            // Dark mode: use fig.jpg for all images
-            imageItems.forEach(img => {
-                img.src = 'photos/fig.jpg';
-            });
-        } else {
-            // Light mode: restore original season images
-            const seasonImages = ['winter.jpg', 'spring.jpg', 'summer.jpg', 'fall.jpg'];
-            imageItems.forEach((img, index) => {
-                if (seasonImages[index]) {
-                    img.src = `photos/${seasonImages[index]}`;
-                }
-            });
-        }
-    }
-
     if (darkModeToggle) {
         // Check for saved dark mode preference
         const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -82,9 +84,15 @@ function initDarkMode() {
         if (isDarkMode) {
             body.classList.add('dark-mode');
             updateImages(true);
+        } else {
+            // Ensure light mode images are set
+            updateImages(false);
         }
 
-        darkModeToggle.addEventListener('click', () => {
+        darkModeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
             body.classList.toggle('dark-mode');
             const isDark = body.classList.contains('dark-mode');
             
@@ -95,14 +103,7 @@ function initDarkMode() {
             updateImages(isDark);
         });
     }
-}
-
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initDarkMode);
-} else {
-    initDarkMode();
-}
+});
 
 // Note: Smooth scrolling for anchor links removed since we're using separate pages now
 
