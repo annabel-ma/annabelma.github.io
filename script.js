@@ -52,5 +52,47 @@ backToTop.addEventListener('click', () => {
     });
 });
 
+// Dark mode toggle functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const imageItems = document.querySelectorAll('.image-item img');
+
+    if (darkModeToggle) {
+        // Check for saved dark mode preference
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            // Switch all images to fig.jpg
+            imageItems.forEach(img => {
+                img.src = 'photos/fig.jpg';
+            });
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            
+            // Save preference
+            localStorage.setItem('darkMode', isDark);
+            
+            // Switch images
+            if (isDark) {
+                // Dark mode: use fig.jpg for all images
+                imageItems.forEach(img => {
+                    img.src = 'photos/fig.jpg';
+                });
+            } else {
+                // Light mode: restore original season images
+                const seasonImages = ['winter.jpg', 'spring.jpg', 'summer.jpg', 'fall.jpg'];
+                imageItems.forEach((img, index) => {
+                    img.src = `photos/${seasonImages[index]}`;
+                });
+            }
+        });
+    }
+});
+
 // Note: Smooth scrolling for anchor links removed since we're using separate pages now
 

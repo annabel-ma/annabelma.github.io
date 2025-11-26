@@ -81,6 +81,48 @@ body {
     opacity: 0.6;
 }
 
+.dark-mode-btn {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: opacity 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+    opacity: 0.6;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #292929;
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar {
+    background-color: #292929;
+}
+
+body.dark-mode .content-area {
+    background-color: #292929;
+}
+
+body.dark-mode .title-link,
+body.dark-mode .nav-menu a,
+body.dark-mode .dark-mode-btn {
+    color: #ffffff;
+}
+
+body.dark-mode .section p,
+body.dark-mode .links a {
+    color: #ffffff;
+}
+
 .content-area {
     flex: 1;
     padding: 2rem 2rem 2rem 0.5rem;
